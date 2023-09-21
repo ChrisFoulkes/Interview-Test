@@ -1,0 +1,72 @@
+-- Overview --
+
+This programming test requires you to implement a function, which evaluates a poker hand of 5 cards for any winning combinations.
+
+When marking this test, we will be looking at
+* Adherence to the algorithm presented below
+* Use of suitable structures, types and modern Javascript
+* Coding style, presentation and use of comments when appropriate
+
+Although you have limited time to complete this test; credit will not be given for finishing it quickly. Spend time tidying and commenting your code
+if you complete it before the deadline.
+
+-- Objective --
+
+See the "Preparation" project that you have been sent previously in order to see what commands to execute. Your objective is to implement
+the function in js/evaluatePokerHand.js so that when "npm test" is executed it reports that all the tests pass.
+
+When complete, please upload your solution to github gist or something similar and reply to the email of whoever sent you this with the link.
+Don't attach the files to an email as virus scanners will remove the attachment.
+
+-- Algorithm --
+
+You first need to count how often a given rank appears in the hand
+* If the hand contains 4 of one rank and 1 of another it's a 'Four of a Kind'
+* If the hand contains 3 of one rank and 2 of another it's a 'Full House'
+* If the hand contains 3 of one rank and 2 other ranks it's a 'Three of a Kind'
+* If the hand contains 2 pairs of a rank and 1 of another it's a 'Two Pairs'
+* If the hand contains 4 ranks, then it's a 'Pair'
+
+Second, check if it is a straight or a flush
+* If all cards in the hand have the same suit it's a 'Flush'
+* If the cards are in order they are a 'Straight' (it could be a 'Wheel' or a 'Broadway' but we only need to know if it's a 'Straight')
+* If it's both a 'Flush' and a 'Straight' it's a 'Straight Flush'.
+* If it's a Straight Flush running from Ten to Ace, then it's a 'Royal Flush'
+
+If it's none of the above, it's a 'High Card'
+
+-- Function description --
+
+The evaluatePokerHand() function accepts an array of objects describing the poker hand. Each object represents a single card, with "rank" and "suit"
+properties. For example, a poker hand can look like
+
+[
+	{ "rank": 2, "suit": "heart" },
+	{ "rank": 3, "suit": "spade" },
+	{ "rank": 4, "suit": "diamond" },
+	{ "rank": 5, "suit": "club" },
+	{ "rank": 6, "suit": "spade" }
+]
+
+Ranks 1, 11, 12 and 13 are Aces, Jacks, Queens and Kings respectively.
+
+The function must then return a string describing the win that has been detected.
+Here is a list of possible values that can be returned by the evaluatePokerHand function:
+
+* "highcard"
+* "pair"
+* "twopair"
+* "threeofakind"
+* "straight"
+* "flush"
+* "fullhouse"
+* "fourofakind"
+* "straightflush"
+* "royalflush"
+
+-- Debugging --
+
+Debugging Node.js projects are outside of the scope of this document; however the simplest and easiest method is to just use console.log( "" ) commands
+to output text to the command window.
+
+Good luck!
